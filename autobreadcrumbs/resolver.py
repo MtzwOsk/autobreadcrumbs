@@ -164,6 +164,9 @@ class PathBreadcrumbResolver(object):
                 namespace = resolved.namespace
                 title = name = resolved.url_name
 
+                if not name:
+                    continue
+
                 if namespace:
                     name = ':'.join([namespace, name])
 
