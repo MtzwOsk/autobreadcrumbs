@@ -101,7 +101,7 @@ def autobreadcrumbs_tag(context):
     if 'autobreadcrumbs_elements' in context:
         elements = []
         for item in context['autobreadcrumbs_elements']:
-            tpl = template.Template(item.title)
+            tpl = template.Template(str(item.title))
             title = tpl.render(template.Context(context))
 
             elements.append(dict(zip(
@@ -140,7 +140,7 @@ def autobreadcrumbs_links(context):
         html_separator = settings.AUTOBREADCRUMBS_HTML_SEPARATOR
 
         for item in context['autobreadcrumbs_elements']:
-            tpl = template.Template(item.title)
+            tpl = template.Template(str(item.title))
             title = tpl.render(template.Context(context))
             elements.append(html_link.format(link=item.path, title=title))
 
