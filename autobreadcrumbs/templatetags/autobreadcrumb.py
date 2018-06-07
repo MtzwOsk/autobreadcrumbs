@@ -143,7 +143,10 @@ def autobreadcrumbs_links(context):
             if item.get_title_form_object:
                 model_obj = context.get('object')
                 if model_obj:
-                    tpl = template.Template(model_obj.title)
+                    try:
+                        tpl = template.Template(model_obj.title)
+                    except AttributeError:
+                        tpl = template.Template(str(item.title))
             else:
                 tpl = template.Template(str(item.title))
             title = tpl.render(template.Context(context))
