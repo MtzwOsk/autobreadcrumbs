@@ -140,7 +140,12 @@ def autobreadcrumbs_links(context):
         html_separator = settings.AUTOBREADCRUMBS_HTML_SEPARATOR
 
         for item in context['autobreadcrumbs_elements']:
-            tpl = template.Template(str(item.title))
+            if item.get_title_form_object:
+                model_obj = context.get('object')
+                if model_obj:
+                    tpl = template.Template(model_obj.title)
+            else:
+                tpl = template.Template(str(item.title))
             title = tpl.render(template.Context(context))
             elements.append(html_link.format(link=item.path, title=title))
 
