@@ -19,11 +19,13 @@ setup(
         'Programming Language :: Python',
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.5',
         'Framework :: Django',
         'Framework :: Django :: 1.5',
         'Framework :: Django :: 1.6',
         'Framework :: Django :: 1.7',
         'Framework :: Django :: 1.8',
+        'Framework :: Django :: 1.9',
         'Framework :: Django :: 1.9',
         'Intended Audience :: Developers',
         'Topic :: Internet :: WWW/HTTP',
@@ -31,7 +33,7 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
     install_requires=[
-        'Django>=1.6,<1.10',
+        'Django>=1.6,<2.1',
     ],
     include_package_data=True,
     zip_safe=False
