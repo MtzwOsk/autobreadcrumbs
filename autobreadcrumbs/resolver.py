@@ -4,7 +4,10 @@ Breadcrumb resolving
 ====================
 
 """
-from django.core.urlresolvers import Resolver404, get_resolver
+try:
+    from django.core.urlresolvers import Resolver404, get_resolver
+except ImportError:
+    from django.urls import Resolver404, get_resolver
 
 from autobreadcrumbs.registry import breadcrumbs_registry
 
