@@ -23,3 +23,6 @@ AUTOBREADCRUMBS_HTML_WITHOUT_LINK = u'<a href="#">{title}</a>'
 
 #: Cut title filed of Model for ``{% autobreadcrumbs_links %}``
 AUTOBREADCRUMBS_TITLE_LENGTH = 20
+
+#: Is last crumbs is link
+AUTOBREADCRUMBS_LAST_IS_LINK = False

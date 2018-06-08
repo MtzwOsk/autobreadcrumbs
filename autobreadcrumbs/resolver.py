@@ -16,7 +16,7 @@ class BreadcrumbRessource(object):
     """
     Simple crumb ressource model to contain all datas about a ressource.
     """
-    def __init__(self, path, name, title, view_args, view_kwargs, link_type_settings):
+    def __init__(self, path, name, title, view_args, view_kwargs, link_type_settings={}):
         self.path = path
         self.name = name
         self.title = title
