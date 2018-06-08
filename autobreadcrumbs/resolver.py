@@ -154,7 +154,7 @@ class PathBreadcrumbResolver(object):
 
         """
         breadcrumbs_elements = []
-        link_type_settingsgit = {}
+        link_type_settings = {}
 
         path_segments = self.cut(path)
 
@@ -186,7 +186,6 @@ class PathBreadcrumbResolver(object):
                 if isinstance(title, tuple) or isinstance(title, list):
                     title, link_type_settings = title
 
-                get_title_form_object = get_object_title_dict.get('get_object_title', False)
                 title = self.format_title(title)
 
                 # Ignore element if empty
