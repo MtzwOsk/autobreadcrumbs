@@ -136,11 +136,13 @@ def autobreadcrumbs_links(context):
     """
     if 'autobreadcrumbs_elements' in context:
         elements = []
+        html_without_link = settings.AUTOBREADCRUMBS_HTML_WITHOUT_LINK
+        html_title_length = settings.AUTOBREADCRUMBS_TITLE_LENGTH
         html_link = settings.AUTOBREADCRUMBS_HTML_LINK
         html_separator = settings.AUTOBREADCRUMBS_HTML_SEPARATOR
 
         for item in context['autobreadcrumbs_elements']:
-            if item.get_title_form_object:
+            if item.link_type_settings.get('get_object_title'):
                 model_obj = context.get('object')
                 if model_obj:
                     try:
@@ -150,7 +152,10 @@ def autobreadcrumbs_links(context):
             else:
                 tpl = template.Template(str(item.title))
             title = tpl.render(template.Context(context))
-            elements.append(html_link.format(link=item.path, title=title))
+            if item.link_type_settings.get('is_title_link'):
+                elements.append(html_without_link.format(title=title[:html_title_length]))
+            else:
+                elements.append(html_link.format(link=item.path, title=title))
 
         return mark_safe(html_separator.join(elements))
 

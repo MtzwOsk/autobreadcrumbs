@@ -17,3 +17,9 @@ AUTOBREADCRUMBS_HTML_LINK = u'<a href="{link}">{title}</a>'
 
 #: Template string for separator item in tag ``{% autobreadcrumbs_links %}``
 AUTOBREADCRUMBS_HTML_SEPARATOR = u' &gt; '
+
+#: Template string for crumb without href and for model title ``{% autobreadcrumbs_links %}``
+AUTOBREADCRUMBS_HTML_WITHOUT_LINK = u'<a href="#">{title}</a>'
+
+#: Cut title filed of Model for ``{% autobreadcrumbs_links %}``
+AUTOBREADCRUMBS_TITLE_LENGTH = 20

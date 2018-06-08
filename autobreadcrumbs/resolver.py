@@ -16,13 +16,13 @@ class BreadcrumbRessource(object):
     """
     Simple crumb ressource model to contain all datas about a ressource.
     """
-    def __init__(self, path, name, title, view_args, view_kwargs, get_title_form_object):
+    def __init__(self, path, name, title, view_args, view_kwargs, link_type_settings):
         self.path = path
         self.name = name
         self.title = title
         self.view_args = view_args
         self.view_kwargs = view_kwargs
-        self.get_title_form_object = get_title_form_object
+        self.link_type_settings = link_type_settings
 
     def __repr__(self):
         return "<BreadcrumbRessource: {0}>".format(self.name)
@@ -183,8 +183,8 @@ class PathBreadcrumbResolver(object):
                 title = breadcrumbs_registry.get_title(name)
 
                 # Custom function usage
-                if (isinstance(title, tuple) or isinstance(title, list)):
-                    title, get_object_title_dict = title
+                if isinstance(title, tuple) or isinstance(title, list):
+                    title, link_type_settings = title
 
                 get_title_form_object = get_object_title_dict.get('get_object_title', False)
                 title = self.format_title(title)
@@ -196,7 +196,7 @@ class PathBreadcrumbResolver(object):
                 # Finally append the part to the knowed crumbs list
                 breadcrumbs_elements.append(
                     BreadcrumbRessource(seg, name, title, resolved.args,
-                                        resolved.kwargs, get_title_form_object)
+                                        resolved.kwargs, link_type_settings)
                 )
 
         return {
