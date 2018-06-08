@@ -160,7 +160,7 @@ def autobreadcrumbs_links(context):
                 if last_crubm_is_link and item.link_type_settings.get('get_object_title'):
                     elements.append(html_without_link.format(title=title[:html_title_length]))
                 elif last_crubm_is_link:
-                    elements.append(html_without_link.format(title=item.path))
+                    elements.append(html_without_link.format(title=title))
                 else:
                     elements.append(html_link.format(link=item.path, title=title))
             else:
