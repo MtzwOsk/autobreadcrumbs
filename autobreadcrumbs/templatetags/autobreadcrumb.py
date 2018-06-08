@@ -163,9 +163,15 @@ def autobreadcrumbs_links(context):
                     elements.append(html_without_link.format(title=item.path))
                 else:
                     elements.append(html_link.format(link=item.path, title=title))
+            else:
+                if item.link_type_settings.get('get_object_title'):
+                    elements.append(html_without_link.format(title=title[:html_title_length]))
+                else:
+                    elements.append(html_link.format(link=item.path, title=title))
 
         return mark_safe(html_separator.join(elements))
 
     return ''
 
 autobreadcrumbs_links.is_safe = True
+
