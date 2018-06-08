@@ -154,7 +154,7 @@ class PathBreadcrumbResolver(object):
 
         """
         breadcrumbs_elements = []
-        get_object_title_dict = {}
+        link_type_settingsgit = {}
 
         path_segments = self.cut(path)
 
